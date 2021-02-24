@@ -33,7 +33,7 @@ public class OpenEchangeRatesService {
     }
 
     @Test
-    public ExchangeRates getToday(){
+    public ExchangeRates getLatest(){
         return exchangeClient.getExchange("latest", openExcRatesApiToken, openExBaseCurrencyCode.toUpperCase());
     }
 
@@ -49,7 +49,7 @@ public class OpenEchangeRatesService {
     @Test
     public boolean isExchangeRateIsHigher(String openExNeedCurrencyCode){
         openExNeedCurrencyCode = openExNeedCurrencyCode.toUpperCase();
-        ExchangeRates today = getToday();
+        ExchangeRates today = getLatest();
         ExchangeRates yesterday = getYesterday();
         return today.getRates().get(openExNeedCurrencyCode) > yesterday.getRates().get(openExNeedCurrencyCode);
     }
