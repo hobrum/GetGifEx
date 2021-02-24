@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "exchange", url = "${openExRatesApiURL}")
 public interface IExchangeClient {
 
-    @RequestMapping(value = "/api/historical/{date}.json", params = {"app_id", "base"}, method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/{date}.json", params = {"app_id", "base"}, method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     ExchangeRates getExchange(@PathVariable String date, @RequestParam(value = "app_id") String appId, @RequestParam(value = "base") String base);
 
 }

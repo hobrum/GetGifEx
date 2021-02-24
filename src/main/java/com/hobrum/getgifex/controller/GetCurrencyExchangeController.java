@@ -51,6 +51,7 @@ public class GetCurrencyExchangeController {
             return ResponseEntity.ok().contentType(MediaType.IMAGE_GIF).body(gifByte);
 
         }
+
         catch (NullPointerException e){
             return ResponseEntity.badRequest().body("Валюта, указанная в параметре openExNeedCurrencyCode (" +openExNeedCurrencyCode +") не существует. " +
                     "Вы можете использовать следующую валюту:\n" +
@@ -73,10 +74,12 @@ public class GetCurrencyExchangeController {
                     "160) XAU, 161) XCD, 162) XDR, 163) XOF, 164) XPD, 165) XPF, 166) XPT, 167) YER, 168) ZAR, 169) ZMW, " +
                     "170) ZWL.");
         }
+
         catch (FeignException.Forbidden e) {
             return ResponseEntity.badRequest().body("В данный момент нельзя использовать валюту отличную от USD, измените значение в" +
                     " параметре openExBaseCurrencyCode на USD");
         }
+
         catch (IOException e){
             return ResponseEntity.badRequest().body("Неизвестная ошибка");
         }

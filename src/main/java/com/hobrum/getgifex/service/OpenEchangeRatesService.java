@@ -34,10 +34,7 @@ public class OpenEchangeRatesService {
 
     @Test
     public ExchangeRates getToday(){
-        Calendar todayCalendar = Calendar.getInstance();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String today = dateFormat.format(todayCalendar.getTime());
-        return exchangeClient.getExchange(today, openExcRatesApiToken, openExBaseCurrencyCode.toUpperCase());
+        return exchangeClient.getExchange("latest", openExcRatesApiToken, openExBaseCurrencyCode.toUpperCase());
     }
 
     @Test
@@ -45,7 +42,7 @@ public class OpenEchangeRatesService {
         Calendar yesterdayCalendar = Calendar.getInstance();
         yesterdayCalendar.add(Calendar.DATE, -1);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String yesterday = dateFormat.format(yesterdayCalendar.getTime());
+        String yesterday = "historical/" +dateFormat.format(yesterdayCalendar.getTime());
         return exchangeClient.getExchange(yesterday, openExcRatesApiToken, openExBaseCurrencyCode.toUpperCase());
     }
 
