@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@SpringBootTest
+
 @RestController
 public class GetCurrencyExchangeController {
 
-    @MockBean
+
     @Value("${openExcRatesApiToken}")
     private String openExcRatesApiToken;
 
-    @MockBean
+
     @Value("${openExNeedCurrencyCode}")
     private String openExNeedCurrencyCode;
 
-    @MockBean
+
     private OpenEchangeRatesService openEchangeRatesService;
 
-    @MockBean
+
     private GiphyService giphyService;
 
 
@@ -40,7 +40,6 @@ public class GetCurrencyExchangeController {
 
     }
 
-    @Test
     @GetMapping("/exchange")
     public ResponseEntity getExchange() {
 

@@ -16,18 +16,18 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Random;
 
-@SpringBootTest
+
 @Service
 public class GiphyService {
 
-    @MockBean
+
     @Value("${giphyApiToken}")
     private String giphyApiToken;
 
-    @MockBean
+
     private ISearchGifsClient searchingGifClient;
 
-    @MockBean
+
     private ApplicationContext applicationContext;
 
     public GiphyService(ISearchGifsClient searchingGifClient, ApplicationContext applicationContext) {
@@ -35,7 +35,7 @@ public class GiphyService {
         this.applicationContext = applicationContext;
     }
 
-    @Test
+
     public byte[] getRandomGif(boolean isEchangeRateIsHigher) throws IOException {
 
         String searchingWorld = isEchangeRateIsHigher ? "rich" : "broke";

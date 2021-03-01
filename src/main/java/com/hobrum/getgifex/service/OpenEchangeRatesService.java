@@ -11,19 +11,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-@SpringBootTest
+
 @Service
 public class OpenEchangeRatesService {
 
-    @MockBean
+
     @Value("${openExBaseCurrencyCode}")
     private String openExBaseCurrencyCode;
 
-    @MockBean
+
     @Value("${openExcRatesApiToken}")
     private String openExcRatesApiToken;
 
-    @MockBean
+
     private IExchangeClient exchangeClient;
 
     public OpenEchangeRatesService(IExchangeClient exchangeClient) {
@@ -32,12 +32,12 @@ public class OpenEchangeRatesService {
 
     }
 
-    @Test
+
     public ExchangeRates getLatest(){
         return exchangeClient.getExchange("latest", openExcRatesApiToken, openExBaseCurrencyCode.toUpperCase());
     }
 
-    @Test
+
     public ExchangeRates getYesterday(){
         Calendar yesterdayCalendar = Calendar.getInstance();
         yesterdayCalendar.add(Calendar.DATE, -1);
@@ -46,7 +46,7 @@ public class OpenEchangeRatesService {
         return exchangeClient.getExchange(yesterday, openExcRatesApiToken, openExBaseCurrencyCode.toUpperCase());
     }
 
-    @Test
+
     public boolean isExchangeRateIsHigher(String openExNeedCurrencyCode){
         openExNeedCurrencyCode = openExNeedCurrencyCode.toUpperCase();
         ExchangeRates today = getLatest();
